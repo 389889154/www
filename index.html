@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="./foo.css" />
+</head>
+
+<body>
+    <header>
+        <a class="back" href="javascript:;"></a>
+        <h1>get information </h1>
+    </header>
+    <h2 onclick="isLocalPhone()" style="background-color:red;color: white">是否本地手机号99
+    </h2>
+    <p onclick="timeAction()" style="background-color:green;color: white">计时培训。</p>
+
+    <p onclick="js2rn()" style="background-color:blue;color: white">JS_2_RN </p>
+
+    <p onclick="groupInv()" style="background-color:black;color: white">组团拉新 2 </p>
+    <p onclick="wxPay()" style="background-color:black;color: white">微信支付 </p>
+    <p onclick="deeplinkAction()" style="background-color:red;color: white">deeplink </p>
+
+    <p onclick="onSynTestDo()" style="background-color:green;color: white">同步做题 </p>
+
+    <p onclick="getLocation()" style="background-color:black;color: white">获取定位 </p>
+
+
+    <img src="./eg_tulip.jpg" alt="上海鲜花港 - 郁金香" />
+    <img src="/Users/weish/Library/Developer/CoreSimulator/Devices/AA96A448-ED12-4A0E-B2FF-D35080709A67/data/Containers/Data/Application/3E5DE04A-9307-43E0-99BB-6AC89D148422/Documents/eg_tulip.jpg"
+        alt="上海鲜花港 - 郁金香" />
+</body>
+<script type="text/javascript">
+
+function getLocation()
+{
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(showPosition);
+confirm('')
+
+    }
+    else
+    {
+        alert('该浏览器不支持获取地理位置。')
+        // x.innerHTML="";
+    }
+
+    
+}
+
+function showPosition(position)
+{
+    let msg ="纬度: " + position.coords.latitude + 
+    "<br>经度: " + position.coords.longitude; 
+    // alert(msg)
+}
+
+    window.addEventListener('message', function (e) {
+
+        const message = e.data;//字符串类型
+
+        console.log('WebView message:', message);
+
+        // alert(message);
+
+    })
+
+    function deeplinkAction() {
+        console.log('=============')
+        let deeplink = 'jxedt://native?data={"pagetype":"sckc","extparam":{"android":{"vip_source":"3005","kemuType":"1"},"ios":{"vip_source":"3005","kemuType":"1"}}}'
+        let prefix = deeplink.indexOf('=') + 1
+        deeplink = deeplink.substr(prefix)
+
+        if (deeplink.length) {
+            let extModel = JSON.parse(deeplink)
+            let source = extModel.extparam.ios.vip_source
+            console.log(source)
+            console.log('=============')
+        }
+
+    }
+
+    function groupInv(argument) {
+
+
+        var params = {
+            "action": "isFromOpenInstall",
+            "param": {
+                "callback": "OpenInstallCallback"
+            }
+        };
+
+        sendActionLocal(params);
+    }
+
+    function OpenInstallCallback(args) {
+
+        // args = {"isFromOpenInstall":1} json 类型字符串
+
+    }
+
+    function wxPay(argument) {
+
+        var params = {
+            "action": "createWXPayOrder",
+            "param": {
+                "callback": "WXPayCallBack",
+                "goodsId": "1262259467110891203",
+                "entranceSource": "001"
+            }
+        };
+
+        sendActionLocal(params);
+    }
+
+    function WXPayCallBack(param) { //{'status':'success'} fail cancel 
+
+        // alert(param.status)
+    }
+    // 26744
+    // 穿关答题
+    // let deeplink = 'jxedt://native?data={"pagetype":"answerQuestion","extparam":{"android":{"vip_source":"3005","kemuType":"1"},"ios":{"vip_source":"3005","kemuType":"1"}}}'
+    function onSynTestDo() {
+        let testDo = {
+            "carType": 0, // 车型
+            "my_answer": "2", // 我的答案 “1234”
+            "is_show_in_wrong": 0, // 错误
+            "is_correct": 1, // 正确
+            "wrong_count": 0,
+            "exercise_type": 0,
+            "testDoID": 2, // 题号
+            "subjectType": 1, // 科目
+            "modifyFlag": 0,
+            "uploadFlag": 1,
+            "add_time": "",
+            "true_answer": "2", // 真实答案
+            "update_time": ""
+        }
+        let params = {
+            // "action": "saveTestDo",
+            "action": "syncExamRecord",
+            
+            "param": {
+                "testDo": testDo
+            }
+        }
+        sendActionLocal(params)
+    }
+
+
+    // OpenInstallCallback({"isFromOpenInstall":1}) json 类型字符串
+
+
+    // js2rn 
+    function js2rn(argument) {
+        // body...
+        // window.postMessage('ok')
+        // if (window.ReactNativeWebView) {
+        // window.postMessage('ok','*')
+        window.ReactNativeWebView.postMessage('ok')
+
+
+
+
+    }
+
+    function timeAction(argument) {
+        // body...
+
+        var params = {
+            "action": "setJSCamera",
+            "param": {
+                "type": 1,
+                "km": 1,
+                "callback": "cameraCallback",
+            }
+        };
+
+        sendActionLocal(params);
+
+    }
+
+    function isLocalPhone(argument) {
+
+        var acti = {
+            "action": "setEventLog",
+            "param": {
+                "pagetype": "CarPrice",
+                "actiontype": "ShowSource",
+                "param": {
+                    source: 1
+                }
+            }
+        };
+
+
+        // sendActionLocal(acti);
+        // var getHeaderAction = {
+        //     "action": "checkIsLocalPhone",
+        //     "param": {
+        //         "phone": "10086",
+        //         "callback": "getHeaderLocal"
+        //     }
+        // };
+
+        // sendActionLocal(getHeaderAction);
+
+        var getJVerificationToken = {
+            "action": "getJVerificationToken",
+            "param": {
+                "callback": "getHeaderLocal"
+            }
+        };
+        sendActionLocal(getJVerificationToken);
+
+    }
+</script>
+<script src="./carinject.js" type="text/javascript"></script>
+
+</html>
