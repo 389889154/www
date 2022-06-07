@@ -26,6 +26,10 @@
 
     <p onclick="getLocation()" style="background-color:black;color: white">获取定位 </p>
 
+<p onclick="universalInteractive()" style="background-color:black;color: white">universalInteractive </p>
+<p onclick="onTestUI()" style="background-color:blueviolet;color: white">测试UA </p>
+    
+
 
     <img src="./eg_tulip.jpg" alt="上海鲜花港 - 郁金香" />
     <img src="/Users/weish/Library/Developer/CoreSimulator/Devices/AA96A448-ED12-4A0E-B2FF-D35080709A67/data/Containers/Data/Application/3E5DE04A-9307-43E0-99BB-6AC89D148422/Documents/eg_tulip.jpg"
@@ -48,6 +52,56 @@ confirm('')
     }
 
     
+}
+
+
+function onTestUI(){
+alert(navigator.userAgent)
+}
+
+function universalInteractive(argument) {
+     let params = {
+            "action": "commInteractive",
+            "params": [
+            {
+                "action2":"JSOld2",
+                "param":{
+                    "arg1":"value1",
+                    "arg2":"value2",
+                    "callback":"shareCallBack"
+                }
+            },
+            {
+                "action":"JSTest",
+                "param":{
+                    "arg1":"value1",
+                    "callback":"shareCallBack"
+                }
+            }
+            ]
+        };
+
+        sendActionLocal(params)
+}
+
+function shareCallBack (params) { //异常情况  返回错误字符串( “没有交互”  “参数错误”)等
+    alert(params)
+}
+
+
+
+
+
+function TopCallback(args) {
+
+    alert('TopCallback')
+
+}
+
+function subCallback(args) {
+
+    alert('subCallback')
+
 }
 
 function showPosition(position)
