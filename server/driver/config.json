@@ -1,0 +1,58 @@
+{
+    "code": 0,
+    "result": {
+        "data": [{
+            "fixedPriceList": [{
+                "adVO": {
+                    "clickNoticeUrl": ["http://richmanranktest.58v5.cn/api/frequency/notice?ruleId=1570311607207079936&noticeType=click", "http://richmanranktest.58v5.cn/api/level/notice?ruleId=1570311607207079936&noticeType=click&clientRequestId=0E9523A9-A07F-4E88-8934-1BDDE7C11F1D&serverRequestId=9c99d15e-19fc-40f0-aac4-d09bae3976ad"],
+                    "type": "jxedt",
+                    "title": "测试",
+                    "templateId": 1,
+                    "content": "",
+                    "tips": {
+                        "addHeader": "true",
+                        "redPoint": "false",
+                        "adLogo": "true",
+                        "logoType": "广告"
+                    },
+                    "imageModel": 1,
+                    "wipe": "惊喜惊喜？",
+                    "adType": "native",
+                    "macroReplaceable": true,
+                    "requestId": "d4d6eb1c-28e1-4049-b230-fff7f49e2c4a",
+                    "action": {
+                        "pagetype": "link",
+                        "actiontype": "loadpage",
+                        "share": {
+                            "enabled": true
+                        },
+                        "title": "测试",
+                        "url": "https://www.baidu.com/"
+                    },
+                    "noticeUrl": ["http://richmanranktest.58v5.cn/api/frequency/notice?ruleId=1570311607207079936&noticeType=exposure", "http://richmanranktest.58v5.cn/api/coldboot/notice?coldBootNumber=1&adSlot=examanalysisad&noticeType=exposure", "http://richmanranktest.58v5.cn/api/level/notice?ruleId=1570311607207079936&noticeType=exposure&clientRequestId=0E9523A9-A07F-4E88-8934-1BDDE7C11F1D&serverRequestId=9c99d15e-19fc-40f0-aac4-d09bae3976ad"],
+                    "imageList": [{
+                        "size": 238012,
+                        "width": 550,
+                        "format": "gif",
+                        "url": "https://pic4.58cdn.com.cn/nowater/jxedt/n_v22596573556484e7f8f752cb046b3ae5f.gif",
+                        "height": 400
+                    }]
+                },
+                "guidePopStyle": 0,
+                "touchModel": 1,
+                "price": 0,
+                "name": "重庆gif",
+                "adSource": 1,
+                "bannerCloseFlag": true,
+                "id": "1570311607207079936",
+                "priority": 20,
+                "version": 7,
+                "advertiserName": "jxedt",
+                "adSlot": "examanalysisad"
+            }],
+            "biddingList": []
+        }],
+        "requestId": "9c99d15e-19fc-40f0-aac4-d09bae3976ad"
+    },
+    "msg": "success"
+}
