@@ -1,4 +1,5 @@
-grep   'ld64' 58.html 
+key="\-ld64"
+grep  ${key} 58.html 
 if [ $? -ne 0 ]; then  
 echo fail
 else
