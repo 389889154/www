@@ -1,0 +1,10 @@
+
+grep -n '\-ld64' ./Driver_4.6/Driver.xcodeproj/project.pbxproj  
+if [ $? -ne 0 ]; then  
+exit 0
+else
+
+
+echo -e "\033[35m project.pbxproj 存在-ld64 \033[0m"
+exit 1
+fi
