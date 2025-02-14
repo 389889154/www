@@ -79,12 +79,14 @@ for code in "${stocks[@]}"; do
     printf("%s\t%.2f\n", name, rank)
   }' >> "$tmpfile"
   
-  sleep 0.5 # 防止请求过于频繁
+  # sleep 0.1 # 防止请求过于频繁
 done
 
 # 按 rank 数值降序排序并输出
 sort -k2,2nr "$tmpfile" | while IFS=$'\t' read -r name rank; do
   color=$([ $(echo "$rank > 0" | bc) -eq 1 ] && echo "$RED" || echo "$GREEN")
+
+
   printf "%-20s ${color}%+8.2f${RESET}\n" "$name" "$rank"
 done
 
