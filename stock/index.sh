@@ -32,6 +32,9 @@ tmpfile=$(mktemp /tmp/stock_rank.XXXXXX)
 
 # 无限循环，每`interval`秒运行一次
 while true; do
+  # 清空屏幕
+  clear
+
   # 清空临时文件
   > "$tmpfile"
 
