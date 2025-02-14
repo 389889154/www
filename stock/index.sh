@@ -36,7 +36,7 @@ tmpfile=$(mktemp /tmp/stock_rank.XXXXXX)
 # 清除屏幕和处理数据的函数
 function fetch_and_display_data {
   # 将光标移动到屏幕顶部而不清除屏幕
-  echo -e "\033[H"
+  clear
 
   # 清空临时文件
   > "$tmpfile"
