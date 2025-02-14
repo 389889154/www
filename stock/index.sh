@@ -67,7 +67,8 @@ function fetch_and_display_data {
   rm -f "$tmpfile"
 
   # 将输出结果发送到企业微信
-  output_message="股票排名更新:\n$sorted_output"
+  output_message="1\n$sorted_output"
+  printf $output_message
 
   # 发送消息到企业微信
   curl -X POST "$webhook_url" \
