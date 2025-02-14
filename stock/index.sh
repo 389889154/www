@@ -30,8 +30,8 @@ stocks=(
 # 临时文件存储数据
 tmpfile=$(mktemp /tmp/stock_rank.XXXXXX)
 
-# 无限循环，每`interval`秒运行一次
-while true; do
+# 清除屏幕和处理数据的函数
+function fetch_and_display_data {
   # 清空屏幕
   clear
 
@@ -42,15 +42,13 @@ while true; do
   for code in "${stocks[@]}"; do
     # 获取股票数据
     response=$(curl -s "http://qt.gtimg.cn/q=${code}" | iconv -f gbk -t utf-8)
-  
+
     # 提取名称和 rank 并保存到临时文件
     echo "$response" | awk -F '~' '{
       name = $2   # 第2字段是股票名称
       rank = $33  # 第33字段是排名或目标数值
       printf("%s\t%.2f\n", name, rank)
     }' >> "$tmpfile"
-  
-    # sleep 0 # 防止请求过于频繁
   done
 
   # 按 rank 数值降序排序并输出
@@ -61,7 +59,16 @@ while true; do
 
   # 清理临时文件
   rm -f "$tmpfile"
+}
 
-  # 每`interval`秒暂停一次
-  sleep $interval
-done
+# 根据interval决定是否执行循环
+if [ "$interval" -eq 0 ]; then
+  # 只执行一次
+  fetch_and_display_data
+else
+  # 无限循环，每`interval`秒运行一次
+  while true; do
+    fetch_and_display_data
+    sleep $interval
+  done
+fi
