@@ -18,7 +18,7 @@ webhook_url="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=783771bb-ed6f-
 
 # 股票代码列表
 stocks=(
-  "sz002212" # 天融信
+  "sz002261" # 天融信
   "sz002387" # 维信诺
   "sh600789" # 鲁抗医药
   "sz300284" # 苏交科
