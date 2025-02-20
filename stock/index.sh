@@ -18,15 +18,15 @@ webhook_url="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=783771bb-ed6f-
 
 # 股票代码列表
 stocks=(
-  "sz002261" # 天融信
+  "sz000034" # 神州数码
   "sz002387" # 维信诺
   "sh600789" # 鲁抗医药
-  "sz300284" # 苏交科
+  "sh603516" #  chunzhongkeji
   "sz002131" # 利欧股份
   "sz002195" # 岩山科技
   "sz002265" # 建设工业
   "sz002402" # 和而泰
-  "sh603211" # 晋拓股份
+  "sz000681" # 视觉中国
   "sz300101" # 振芯科技
 )
 
